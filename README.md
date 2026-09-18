@@ -2,10 +2,10 @@
 
 # 🎓 SyncroLearn
 
-### Learn together. Teach what you know. Grow further.
+### Your university community can learn, teach, and grow together.
 
 <p>
-  <strong>A full-stack peer-to-peer learning platform for students, tutors, and administrators.</strong>
+  <strong>A peer-learning platform where students share knowledge, tutors build courses, faculty support learning, and every completed course can become a verified achievement.</strong>
 </p>
 
 <p>
@@ -21,69 +21,159 @@
 </p>
 
 <p>
+  <a href="#-the-vision">Vision</a> •
+  <a href="#-who-is-it-for">Who is it for?</a> •
   <a href="#-features">Features</a> •
   <a href="#-quick-start">Quick start</a> •
-  <a href="#-architecture">Architecture</a> •
-  <a href="#-project-structure">Project structure</a>
+  <a href="#-architecture">Architecture</a>
 </p>
 
 </div>
 
 ---
 
-## ✨ What is SyncroLearn?
+## 🌟 The vision
 
-SyncroLearn turns online learning into a connected community. Students can discover courses, learn from experienced tutors, complete quizzes, earn certificates, and track their progress. Tutors can share their expertise by creating and managing courses, while administrators keep the platform healthy and engaging.
+SyncroLearn is designed for a university learning community where knowledge does not flow in only one direction.
+
+A student who is excellent at a subject, tool, or practical topic can become a tutor, record a course, share it with fellow students, and earn part-time income from the value they create. Faculty members and experienced educators can also publish structured courses, add assessments, and guide learners through a complete learning journey.
+
+Students get one place to:
+
+- Learn from peers, tutors, and faculty
+- Find focused courses beyond the traditional classroom
+- Learn through video, documents, discussions, and quizzes
+- Track progress and build a record of completed learning
+- Earn certificates that can be verified after course completion
+
+SyncroLearn combines a university learning community with the flexibility of a creator-led learning marketplace.
+
+## 👥 Who is it for?
 
 <table>
 <tr>
 <td width="33%" align="center">
-<h3>📚 Learn</h3>
-Discover courses, follow structured modules, watch lessons, complete quizzes, and build real skills.
+<h3>🎒 Students</h3>
+Learn from classmates and educators, complete courses, take quizzes, earn certificates, and build a stronger academic and practical profile.
 </td>
 <td width="33%" align="center">
-<h3>🧑‍🏫 Teach</h3>
-Create courses, publish learning content, manage modules, and help other learners succeed.
+<h3>🧑‍🏫 Student tutors</h3>
+Turn strong subject knowledge into structured video courses, help peers learn, grow an instructor reputation, and earn part-time income.
 </td>
 <td width="33%" align="center">
-<h3>🏆 Grow</h3>
-Earn certificates, collect badges, climb leaderboards, and measure your learning progress.
+<h3>🏫 Faculty & admins</h3>
+Publish high-quality learning content, review courses, support the community, moderate discussions, and manage the platform.
 </td>
 </tr>
 </table>
+
+> **Current role model:** the application currently uses `STUDENT`, `TUTOR`, and `ADMIN` roles. Faculty-style course publishing is supported through the tutor workflow, while governance and approvals are handled through admin capabilities. A separate `FACULTY` role can be added as the university deployment evolves.
+
+## 🔁 How SyncroLearn works
+
+```mermaid
+flowchart LR
+    S[Student discovers a topic] --> E[Enrolls in a course]
+    E --> V[Watches videos and reads notes]
+    V --> D[Discusses with peers and tutors]
+    D --> Q[Completes module quizzes]
+    Q --> P[Progress, XP, badges and analytics]
+    P --> C[Course completion]
+    C --> R[Download and verify certificate]
+
+    T[Student or faculty member has expertise] --> A[Creates a structured course]
+    A --> M[Adds modules, video/PDF content and quizzes]
+    M --> AP[Course approval and publishing]
+    AP --> E
+    AP --> I[Enrollments, instructor reputation and income]
+```
 
 ## 🚀 Features
 
-<table>
-<tr>
-<td width="50%">
+### 📚 Learning experience
 
-### 🎯 Student experience
+| Capability | What learners can do |
+| --- | --- |
+| Course discovery | Browse, search, view recommendations, and inspect course details |
+| Course comparison | Compare price, rating, modules, estimated hours, and value |
+| Flexible content | Learn from video lessons, PDF notes, and structured modules |
+| Enrollment | Join courses and access a personal learning dashboard |
+| Progress tracking | Save course progress, module completion, and video positions |
+| Quizzes | Take multiple-choice module quizzes and review results |
+| Discussions | Ask questions, reply to peers, upvote useful discussions, and identify tutor answers |
+| Wishlist | Save interesting courses for later |
+| Analytics | Review completion percentages, learning time, weekly activity, and goals |
 
-- Course browsing and detailed course pages
-- Secure signup, login, and protected routes
-- Enrollment and learning progress tracking
-- Video and PDF learning resources
-- Quizzes and instant results
-- Wishlist and course comparison
-- Certificates and public verification
+### 🏆 Completion and recognition
 
-</td>
-<td width="50%">
+- Course completion tracking at both course and module level
+- Downloadable completion certificates
+- Public certificate verification through `/verify` and `/verify/:code`
+- Certificate records showing validity, learner, course, and issue date
+- Knowledge points, levels, learning streaks, achievements, and badges
+- Student **Hall of Fame** leaderboard
+- Tutor **Top Instructors** leaderboard
 
-### 🛠️ Platform experience
+### 🎥 Tutor and faculty-style publishing
 
-- Tutor studio for course creation and editing
-- Student and tutor leaderboards
-- Gamification, badges, and activity tracking
-- Discussions and real-time chat support
-- Admin dashboard and system settings
-- Global announcements and maintenance mode
-- Cloudinary media upload integration
+Tutors can use the Tutor Studio to:
 
-</td>
-</tr>
-</table>
+- Create a course with a title, description, price, and thumbnail
+- Add and edit modules
+- Add video resources and PDF/notes content
+- Create quiz questions and multiple-choice answers
+- Upload learning files
+- Monitor enrollment counts and course performance
+- See instructor revenue estimates and ratings
+- Edit or remove published course content
+
+This enables a student with strong knowledge in a subject or practical topic to package that knowledge into a video-based course and create a part-time income opportunity while helping classmates.
+
+### 🛡️ Admin and university-community controls
+
+Administrators can:
+
+- View platform overview metrics
+- Manage users and change roles
+- Ban or restore accounts
+- Review pending courses
+- Approve, reject, or delete courses
+- Moderate and hide community discussions
+- View financial and platform-fee statistics
+- Configure global announcements
+- Enable maintenance mode while keeping admin access
+
+## 🎓 Example journeys
+
+### Student learning journey
+
+1. A student signs up and explores courses.
+2. They compare courses or save them to their wishlist.
+3. They enroll in a course and open its modules.
+4. They watch videos, read PDFs, and discuss questions.
+5. They complete module quizzes and their progress is saved.
+6. They finish the course and download a certificate.
+7. Anyone with the certificate code can verify the achievement.
+
+### Peer tutor journey
+
+1. A student identifies a subject or practical skill they know well.
+2. They register as a tutor and open Tutor Studio.
+3. They create a course with video lessons, notes, modules, and quizzes.
+4. The course can go through platform approval before publishing.
+5. Other students enroll and learn from the course.
+6. The tutor builds recognition through enrollments, ratings, discussions, and the instructor leaderboard.
+7. Course performance and revenue estimates support a part-time teaching opportunity.
+
+### Faculty educator journey
+
+1. A faculty member creates a structured course using the same authoring workflow.
+2. They organize content into modules and assessments.
+3. Students learn asynchronously and discuss concepts inside the course.
+4. Quiz outcomes and progress provide a learning signal.
+5. Students who complete the course receive a verifiable certificate.
+
+> Faculty is currently represented by the existing tutor/content-creator flow. University identity, departments, terms, credits, institutional SSO, and a dedicated faculty role are natural next steps for a university-specific deployment.
 
 ## 🧩 Architecture
 
@@ -96,15 +186,16 @@ flowchart LR
     API --> Mail[SMTP email service]
 ```
 
-## 🧰 Tech stack
+## 🧰 Technology stack
 
 | Layer | Technologies |
 | --- | --- |
 | Frontend | React 19, Vite, React Router, Tailwind CSS, Framer Motion, Recharts |
 | Backend | Java 21, Spring Boot 3.5, Spring Web, Spring Security, Spring Data JPA |
 | Data | H2 for local development, MySQL-ready configuration |
-| Authentication | JWT access tokens, role-based authorization |
-| Integrations | Cloudinary, SMTP mail, WebSocket/STOMP |
+| Authentication | JWT access tokens and role-based authorization |
+| Learning media | Video player, PDF viewer, file upload, Cloudinary integration |
+| Communication | Course discussions and WebSocket/STOMP support |
 | Quality | Maven tests, JUnit, Spring Security Test, Testcontainers |
 
 ## ⚡ Quick start
@@ -116,16 +207,16 @@ flowchart LR
 - [Java](https://adoptium.net/) 21 or newer
 - Maven, or the Maven wrapper included in the backend
 
-### 1. Start the backend
+### Start the backend
 
 ```powershell
 cd studysync-backend
 .\mvnw.cmd spring-boot:run
 ```
 
-The backend uses an H2 in-memory database by default and starts on the Spring Boot default port.
+The backend uses an H2 in-memory database by default and runs on the Spring Boot default port.
 
-### 2. Start the frontend
+### Start the frontend
 
 Open a second terminal:
 
@@ -137,10 +228,11 @@ npm run dev
 
 Then open the Vite URL shown in the terminal, usually `http://localhost:5173`.
 
-### Production frontend build
+### Build and validate the frontend
 
 ```powershell
 cd studysync-frontend
+npm run lint
 npm run build
 ```
 
@@ -150,9 +242,10 @@ npm run build
 Syncro_Learn/
 ├── README.md
 ├── studysync-frontend/
-│   ├── src/pages/          # Landing, dashboard, course, quiz, admin views
-│   ├── src/components/     # Reusable UI and learning components
-│   ├── src/services/       # Frontend API integration
+│   ├── src/pages/          # Landing, dashboards, courses, quizzes and admin views
+│   ├── src/components/     # Reusable learning, media and discussion components
+│   ├── src/hooks/          # Shared frontend behavior such as wishlist state
+│   ├── src/services/       # API integration and authentication handling
 │   └── package.json
 └── studysync-backend/
     ├── src/main/java/
@@ -160,7 +253,7 @@ Syncro_Learn/
     │   ├── service/        # Business logic
     │   ├── model/          # JPA entities
     │   ├── repository/     # Persistence access
-    │   └── config/         # Security and application configuration
+    │   └── config/          # Security and application configuration
     ├── src/test/            # Unit and integration tests
     └── pom.xml
 ```
@@ -177,7 +270,19 @@ For production deployments, provide secrets through environment variables instea
 | `CLOUDINARY_API_SECRET` | Cloudinary API secret |
 | Mail settings | SMTP credentials for email notifications |
 
-The local H2 configuration is intended for development only. Use a managed SQL database and strong secrets in production.
+The local H2 configuration is intended for development only. Use a managed SQL database, institution-aware access control, and strong secrets in production.
+
+## 🛣️ University-ready roadmap
+
+The current foundation supports the peer-learning marketplace experience. The following additions would make it fully institution-specific:
+
+- Dedicated `FACULTY` role and faculty dashboard
+- University email verification or institutional SSO
+- Department, program, semester, and campus-based discovery
+- Faculty review and approval workflows for peer-created courses
+- Academic credits, prerequisites, course sections, and term scheduling
+- University payment and tutor payout policies
+- Institution-wide reporting and learning analytics
 
 ## 📖 More documentation
 
@@ -200,6 +305,6 @@ This project is intended for educational and portfolio use unless otherwise spec
 
 <div align="center">
 
-### Made for curious learners and generous teachers 💙
+### Knowledge is more powerful when students can share it 💙
 
 </div>

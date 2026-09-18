@@ -71,22 +71,40 @@ Publish high-quality learning content, review courses, support the community, mo
 
 ## 🔁 How SyncroLearn works
 
-```mermaid
-flowchart LR
-    S[Student discovers a topic] --> E[Enrolls in a course]
-    E --> V[Watches videos and reads notes]
-    V --> D[Discusses with peers and tutors]
-    D --> Q[Completes module quizzes]
-    Q --> P[Progress, XP, badges and analytics]
-    P --> C[Course completion]
-    C --> R[Download and verify certificate]
+<table>
+<tr>
+<td width="50%" valign="top">
 
-    T[Student or faculty member has expertise] --> A[Creates a structured course]
-    A --> M[Adds modules, video/PDF content and quizzes]
-    M --> AP[Course approval and publishing]
-    AP --> E
-    AP --> I[Enrollments, instructor reputation and income]
-```
+### 🎒 For a student
+
+| Step | Journey |
+| --- | --- |
+| **01** | Discover a course or topic |
+| **02** | Compare courses, save a wishlist, and enroll |
+| **03** | Watch videos and read PDF notes |
+| **04** | Discuss lessons with peers and tutors |
+| **05** | Complete module quizzes |
+| **06** | Track progress, XP, badges, and analytics |
+| **07** | Finish the course and receive a certificate |
+
+</td>
+<td width="50%" valign="top">
+
+### 🧑‍🏫 For a tutor or faculty educator
+
+| Step | Journey |
+| --- | --- |
+| **01** | Share expertise in a subject or practical topic |
+| **02** | Create a structured course |
+| **03** | Add modules, videos, PDFs, and quizzes |
+| **04** | Submit the course for review and publishing |
+| **05** | Teach learners through course discussions |
+| **06** | Build instructor recognition and reputation |
+| **07** | Create a part-time income opportunity |
+
+</td>
+</tr>
+</table>
 
 ## 🚀 Features
 
@@ -178,12 +196,14 @@ Administrators can:
 ## 🧩 Architecture
 
 ```mermaid
-flowchart LR
-    Browser[React + Vite frontend] -->|REST API / WebSocket| API[Spring Boot backend]
+flowchart TD
+    Browser[React + Vite frontend]
+    Browser --> API[Spring Boot REST API]
+    Browser --> Socket[WebSocket / STOMP]
     API --> Security[Spring Security + JWT]
-    API --> Data[(H2 / MySQL database)]
-    API --> Media[Cloudinary media storage]
-    API --> Mail[SMTP email service]
+    API --> Data[(H2 / MySQL)]
+    API --> Media[Cloudinary]
+    API --> Mail[SMTP email]
 ```
 
 ## 🧰 Technology stack

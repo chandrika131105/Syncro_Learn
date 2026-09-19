@@ -1,0 +1,9 @@
+.git
+.github
+.vscode
+.mvn/wrapper
+target
+uploads
+*.log
+README.md
+HELP.md

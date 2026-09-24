@@ -47,7 +47,7 @@
 | :--- | :--- | :--- | :--- |
 | **🛡️ Admin** | `admin@studysync.com` | `password` | Course approval queue, user role management, system-wide moderation |
 | **🧑‍🏫 Tutor** | `tutor@studysync.com` | `password` | Tutor Studio, module authoring, video/PDF upload, quiz builder |
-| **🎒 Student** | `user@studysync.com` | `password` | Browse & enroll in courses, video lesson player, quizzes, verifiable certificate download |
+| **🎒 Student** | `user1@studysync.com` | `password` | Browse & enroll in courses, video lesson player, quizzes, verifiable certificate download |
 
 ---
 

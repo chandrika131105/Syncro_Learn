@@ -297,19 +297,30 @@ Syncro_Learn/
     └── pom.xml
 ```
 
-## 🔐 Configuration
+## 🔐 Environment & Configuration
 
-For production deployments, provide secrets through environment variables instead of committing credentials:
+All sensitive secrets and external service credentials are decoupled through environment variables. For local development, sensible defaults—including an in-memory H2 database—allow the application to run out of the box.
 
-| Variable | Purpose |
-| --- | --- |
-| `JWT_SECRET` | Signs and validates authentication tokens |
-| `CLOUDINARY_CLOUD_NAME` | Cloudinary account name |
-| `CLOUDINARY_API_KEY` | Cloudinary API key |
-| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
-| Mail settings | SMTP credentials for email notifications |
+### Backend (`studysync-backend`)
 
-The local H2 configuration is intended for development only. Use a managed SQL database, institution-aware access control, and strong secrets in production.
+| Variable | Default (Dev) | Description |
+| :--- | :--- | :--- |
+| `PORT` | `8080` | HTTP server port; cloud hosts can provide this dynamically |
+| `JWT_SECRET` | Dev fallback key | Cryptographic key used to sign JWT authentication tokens |
+| `CLOUDINARY_CLOUD_NAME` | `demo` | Cloudinary account name for media uploads |
+| `CLOUDINARY_API_KEY` | `000000000` | Cloudinary API key |
+| `CLOUDINARY_API_SECRET` | `secret` | Cloudinary API secret |
+| `SPRING_DATASOURCE_URL` | `jdbc:h2:mem:studysync1` | Database URL; H2 for development, MySQL or another managed SQL database for production |
+| `SPRING_DATASOURCE_USERNAME` | `sa` | Database username when using an external production database |
+| `SPRING_DATASOURCE_PASSWORD` | Empty | Database password when using an external production database |
+
+### Frontend (`studysync-frontend`)
+
+| Variable | Default (Dev) | Description |
+| :--- | :--- | :--- |
+| `VITE_API_URL` | `http://localhost:8080/api` | Base URL for the Spring Boot REST API |
+
+> 🔒 **Security notice:** In production, replace in-memory databases and development fallback values with a managed relational database and credentials injected through the hosting platform. Never commit real passwords, API keys, JWT secrets, or SMTP credentials to GitHub.
 
 ## 🛣️ University-ready roadmap
 

@@ -299,7 +299,7 @@ Syncro_Learn/
 
 ## 🔐 Environment & Configuration
 
-All sensitive secrets and external service credentials are decoupled through environment variables. For local development, sensible defaults—including an in-memory H2 database—allow the application to run out of the box.
+All sensitive secrets and external service credentials are decoupled through environment variables following the 12-Factor App methodology. For local development, sensible defaults—including an in-memory H2 database—allow the application to run out of the box.
 
 ### Backend (`studysync-backend`)
 
@@ -342,12 +342,21 @@ The current foundation supports the peer-learning marketplace experience. The fo
 | Backend | [`studysync-backend/HELP.md`](studysync-backend/HELP.md) |
 | Engineering rules | [`studysync-backend/PROJECT_CONSTRAINTS.md`](studysync-backend/PROJECT_CONSTRAINTS.md) |
 
-## 🌱 Contributing
+## 🤝 Contributing & Engineering Standards
+ 
+Contributions, bug reports, and feature proposals are welcome! Please follow the standard Git branch workflow:
 
-1. Create a feature branch from `main`.
-2. Keep frontend and backend changes focused.
-3. Run the relevant frontend build or backend tests.
-4. Open a pull request with a clear description and screenshots for UI changes.
+1. **Fork or Branch**: Create a feature branch with a descriptive name:
+   ```bash
+   git checkout -b feature/course-analytics-enhancement
+   # or
+   git checkout -b fix/auth-token-refresh
+   ```
+2. **Code & Commit Hygiene**: Keep commits atomic and follow [Conventional Commits](https://www.conventionalcommits.org/) format (`feat:`, `fix:`, `refactor:`, `test:`).
+3. **Verify Locally**:
+   - **Frontend**: Run `npm run lint` and `npm run build` in `studysync-frontend/`.
+   - **Backend**: Run `mvn test` in `studysync-backend/`.
+4. **Submit Pull Request**: Open a PR against `main` with a clear explanation of changes, test coverage, and UI screenshots/GIFs for visual features.
 
 ## 📄 License
 

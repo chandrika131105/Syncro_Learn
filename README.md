@@ -24,11 +24,30 @@
   <a href="#-the-vision">Vision</a> •
   <a href="#-who-is-it-for">Who is it for?</a> •
   <a href="#-features">Features</a> •
+  <a href="#-live-demo--demo-credentials">Live Demo</a> •
   <a href="#-quick-start">Quick start</a> •
   <a href="#-architecture">Architecture</a>
 </p>
 
 </div>
+
+---
+
+## 🌐 Live Demo & Demo Credentials
+
+> 🚀 **Explore the live deployed application:**
+> - **Live Web App**: [https://syncro-learn.vercel.app](https://syncro-learn.vercel.app)
+> - **Backend REST API**: [https://syncro-learn.onrender.com](https://syncro-learn.onrender.com)
+> 
+> ⏱️ *Note: The backend is hosted on a free cloud instance (Render). Please allow ~30 seconds for the initial wake-up if the service was idle.*
+
+### 🔑 Instant Demo Accounts for Testing
+
+| Role | Demo Email | Password | What to Explore |
+| :--- | :--- | :--- | :--- |
+| **🛡️ Admin** | `admin@studysync.com` | `password` | Course approval queue, user role management, system-wide moderation |
+| **🧑‍🏫 Tutor** | `tutor@studysync.com` | `password` | Tutor Studio, module authoring, video/PDF upload, quiz builder |
+| **🎒 Student** | `user@studysync.com` | `password` | Browse & enroll in courses, video lesson player, quizzes, verifiable certificate download |
 
 ---
 
@@ -194,16 +213,16 @@ Administrators can:
 > Faculty is currently represented by the existing tutor/content-creator flow. University identity, departments, terms, credits, institutional SSO, and a dedicated faculty role are natural next steps for a university-specific deployment.
 
 ## 🧩 Architecture
-
+ 
 ```mermaid
 flowchart TD
-    Browser[React + Vite frontend]
-    Browser --> API[Spring Boot REST API]
-    Browser --> Socket[WebSocket / STOMP]
-    API --> Security[Spring Security + JWT]
-    API --> Data[(H2 / MySQL)]
-    API --> Media[Cloudinary]
-    API --> Mail[SMTP email]
+    Client["User Browser"] -->|Visits Web App| Vercel["React + Vite Frontend\n(Hosted on Vercel)"]
+    Vercel -->|HTTPS REST API Requests| Render["Spring Boot 3.5 API\n(Dockerized on Render.com)"]
+    Vercel -.->|WebSocket / STOMP| Render
+    Render --> Security["Spring Security + JWT"]
+    Render --> Data[("In-Memory H2 / Cloud MySQL")]
+    Render --> Media["Cloudinary (Media Storage)"]
+    Render --> Mail["SMTP Email Service"]
 ```
 
 ## 🧰 Technology stack

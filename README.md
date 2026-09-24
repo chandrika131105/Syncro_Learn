@@ -297,19 +297,28 @@ Syncro_Learn/
     └── pom.xml
 ```
 
-## 🔐 Configuration
+## 🔐 Environment & Configuration
 
-For production deployments, provide secrets through environment variables instead of committing credentials:
+All sensitive secrets and external service credentials are decoupled via environment variables using the 12-Factor App methodology. For local development, sensible defaults (including in-memory H2 DB) allow the app to run out-of-the-box.
 
-| Variable | Purpose |
-| --- | --- |
-| `JWT_SECRET` | Signs and validates authentication tokens |
-| `CLOUDINARY_CLOUD_NAME` | Cloudinary account name |
-| `CLOUDINARY_API_KEY` | Cloudinary API key |
-| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
-| Mail settings | SMTP credentials for email notifications |
+### Backend (`studysync-backend`)
 
-The local H2 configuration is intended for development only. Use a managed SQL database, institution-aware access control, and strong secrets in production.
+| Variable | Default (Dev) | Description |
+| :--- | :--- | :--- |
+| `PORT` | `8080` | Server HTTP port (dynamically set by cloud hosts) |
+| `JWT_SECRET` | *Dev fallback key* | 256-bit cryptographic key for signing JWT tokens |
+| `CLOUDINARY_CLOUD_NAME` | `demo` | Cloudinary account name for media uploads |
+| `CLOUDINARY_API_KEY` | `000000000` | Cloudinary API Key |
+| `CLOUDINARY_API_SECRET` | `secret` | Cloudinary API Secret |
+| `SPRING_DATASOURCE_URL` | `jdbc:h2:mem:studysync1` | Database connection URL (H2 for dev, PostgreSQL/MySQL for prod) |
+
+### Frontend (`studysync-frontend`)
+
+| Variable | Default (Dev) | Description |
+| :--- | :--- | :--- |
+| `VITE_API_URL` | `http://localhost:8080/api` | Base URL pointing to the Spring Boot REST API |
+
+> 🔒 **Security Notice**: In production deployments, in-memory databases and default secrets are replaced with managed relational databases and environment-injected credentials.
 
 ## 🛣️ University-ready roadmap
 
@@ -331,12 +340,21 @@ The current foundation supports the peer-learning marketplace experience. The fo
 | Backend | [`studysync-backend/HELP.md`](studysync-backend/HELP.md) |
 | Engineering rules | [`studysync-backend/PROJECT_CONSTRAINTS.md`](studysync-backend/PROJECT_CONSTRAINTS.md) |
 
-## 🌱 Contributing
+## 🤝 Contributing & Engineering Standards
+ 
+Contributions, bug reports, and feature proposals are welcome! Please follow the standard Git branch workflow:
 
-1. Create a feature branch from `main`.
-2. Keep frontend and backend changes focused.
-3. Run the relevant frontend build or backend tests.
-4. Open a pull request with a clear description and screenshots for UI changes.
+1. **Fork or Branch**: Create a feature branch with a descriptive name:
+   ```bash
+   git checkout -b feature/course-analytics-enhancement
+   # or
+   git checkout -b fix/auth-token-refresh
+   ```
+2. **Code & Commit Hygiene**: Keep commits atomic and follow [Conventional Commits](https://www.conventionalcommits.org/) format (`feat:`, `fix:`, `refactor:`, `test:`).
+3. **Verify Locally**:
+   - **Frontend**: Run `npm run lint` and `npm run build` in `studysync-frontend/`.
+   - **Backend**: Run `mvn test` in `studysync-backend/`.
+4. **Submit Pull Request**: Open a PR against `main` with a clear explanation of changes, test coverage, and UI screenshots/GIFs for visual features.
 
 ## 📄 License
 

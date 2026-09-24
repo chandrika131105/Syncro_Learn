@@ -1,14 +1,16 @@
-FROM eclipse-temurin:21-jdk AS build
+FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
 
 WORKDIR /app
 
-COPY .mvn .mvn
-COPY mvnw pom.xml ./
-COPY src src
+# Copy pom.xml and source code
+COPY pom.xml .
+COPY src ./src
 
-RUN chmod +x mvnw && ./mvnw -DskipTests package
+# Build the jar using maven
+RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:21-jre
+# Run stage with lightweight JRE
+FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
